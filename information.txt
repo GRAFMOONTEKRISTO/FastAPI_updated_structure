@@ -1,0 +1,35 @@
+All install:
+1. pip install fastapi uvicorn
+2. pip install python-dotenv - это правильный способ
+3. pip install sqlalchemy alembic psycopg2
+4. pip install "fastapi-users[sqlalchemy]" - скачивание для библиотеки FastUsers
+5. pip install asyncpg
+6.
+
+1. from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get('/')
+def get_info():
+    return "Hello, world"
+2.  Запуск программы
+uvicorn - веб-сервер, который обрабатывает запросы
+В терминате прописываем - uvicorn [название главного файла]: [название переменной, которое создает приложение] --reload(автоматическая перезагрузка,если что-то поменялось в коде)
+Пример - uvicorn main_application:app --reload
+Пример SQL-запроса
+	select * from role;
+	insert into role values(1,'user', null),(2.'admin', null)
+
+
+Скачиваем библиотеку для моделей - sqlalchemy
+Скачиваем библиотеку для миграций - alembic
+Скачиваем конектор - psycopg2
+Пример (pip install sqlalchemy alembic psycopg2)
+
+Работа с миграциями
+1. alembic init migrations - сначала иницилизируем
+2. alembic revision --autogenerate -m "Назавание миграции" - создаем ревизию
+3. alembic upgrade [код до какой ревизии хочу откатиться]
+Удаление талиц в БД - DROP TABLE [НАЗВАНИЕ] CASCADE;
