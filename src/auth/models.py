@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import MetaData, Table, Column, Integer, String, TIMESTAMP, ForeignKey, JSON, Boolean
 
-metadata = MetaData()
+metadata = MetaData()  # эта переменная аккумулирует в себе информацию о созданных таблицах
 
 role = Table(
     "role",
