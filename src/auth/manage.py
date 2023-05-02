@@ -1,9 +1,10 @@
 from typing import Optional
 
 from fastapi import Depends, Request
-from fastapi_users import BaseUserManager, UUIDIDMixin, IntegerIDMixin, exceptions, models, schemas
+from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
 
-from auth.database import User, get_user_db  # тут была ошибка - нужно правильно указать откуда мы направляем юзера
+from src.auth.utils import get_user_db
+from src.database import User  # тут была ошибка - нужно правильно указать откуда мы направляем юзера
 
 SECRET = "SECRET"
 

@@ -1,24 +1,14 @@
-from datetime import datetime
-from enum import Enum
-from typing import List, Optional
-
 from fastapi import FastAPI
 from fastapi.params import Depends
-from fastapi_users import fastapi_users, FastAPIUsers
-from pydantic import BaseModel, Field
+from fastapi_users import FastAPIUsers
 
-from auth.auth import auth_backend
-from auth.database import User
-from auth.manage import get_user_manager
-from auth.schemas import UserRead, UserCreate
+from src.auth.base_config import auth_backend, fastapi_users
+from src.database import User
+from src.auth.manage import get_user_manager
+from src.auth.schemas import UserRead, UserCreate
 
 app = FastAPI(
     title='Trading App'
-)
-
-fastapi_users = FastAPIUsers[User, int](
-    get_user_manager,
-    [auth_backend],
 )
 
 app.include_router(
