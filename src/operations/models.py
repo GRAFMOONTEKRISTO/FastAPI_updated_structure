@@ -1,6 +1,6 @@
-from sqlalchemy import Table, Column, Integer, String, TIMESTAMP, MetaData
+from sqlalchemy import TIMESTAMP, Column, Integer, String, Table
 
-metadata = MetaData()  # эта переменная аккумулирует в себе информацию о созданных таблицах(6 урак 8:43)
+from src.database import metadata
 
 operation = Table(
     "operation",
