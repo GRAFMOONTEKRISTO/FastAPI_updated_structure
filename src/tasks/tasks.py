@@ -3,7 +3,7 @@ from email.message import EmailMessage
 
 from celery import Celery
 
-from src.config import GRAFMONTECRISTO_PASSWORD, GRAFMONTECRISTO_USER
+from src.config import SMTP_PASSWORD, SMTP_USER
 
 SMTP_HOST = "GRAFMONTECRISTO.gmail.com"
 SMTP_PORT = 465
@@ -14,8 +14,8 @@ celery = Celery('tasks', broker='redis://localhost:6379')
 def get_email_template_dashboard(username: str):
     email = EmailMessage()
     email['Subject'] = 'Натрейдил Отчет Дашборд'
-    email['From'] = GRAFMONTECRISTO_USER
-    email['To'] = GRAFMONTECRISTO_USER
+    email['From'] = SMTP_USER
+    email['To'] = SMTP_USER
 
     email.set_content(
         '<div>'
@@ -33,5 +33,5 @@ def get_email_template_dashboard(username: str):
 def send_email_report_dashboard(username: str):
     email = get_email_template_dashboard(username)
     with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
-        server.login(GRAFMONTECRISTO_USER, GRAFMONTECRISTO_PASSWORD)
+        server.login(SMTP_USER, SMTP_PASSWORD)
         server.send_message(email)
